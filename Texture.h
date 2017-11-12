@@ -3,11 +3,12 @@
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
+#include <iostream>
 #include "Game.h"
 class Texture
 {
 public:
-    Texture( const char*  );
+    Texture( const std::string );
     Texture( SDL_Texture* );
     Texture();
     virtual ~Texture ();

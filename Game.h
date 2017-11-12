@@ -2,11 +2,13 @@
 #define GAME_H_INCLUDED
 
 #include <SDL2/SDL.h>
+#include <boost/filesystem.hpp>
+#include <iostream>
 
 extern const int WINDOW_WIDTH;
 extern const int WINDOW_HEIGHT;
-extern const char* WINDOW_TITLE;
-
+extern const std::string WINDOW_TITLE;
+extern const std::string CWD;
 class Game
 {
 public:

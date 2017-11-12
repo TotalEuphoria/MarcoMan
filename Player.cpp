@@ -2,7 +2,7 @@
 
 
 
-Player::Player() : MovingEntity( 32 , 32 , 24 , 24 ) , Texture( "/home/marco/MarcoMan/sprites/megamanSpritesheet.png" )
+Player::Player() : MovingEntity( 32 , 32 , 24 , 24 ) , Texture( CWD+"/sprites/megamanSpritesheet.png" )
 {
 	speed = 200;
 	state = JUMP_DES;

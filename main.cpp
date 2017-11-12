@@ -39,7 +39,6 @@ int main()
             game.event( &event );
             block.event( &event );
         }
-		
         SDL_SetRenderDrawColor( game.getRenderer() , 0xFF , 0xFF , 0xFF , 0xFF );
         SDL_RenderClear( game.getRenderer() );
         scenario.render();
@@ -47,7 +46,6 @@ int main()
 		block.update();
         SDL_RenderPresent( game.getRenderer() );
         timer.getTicks();
-		
     }
     return 0;
 }

@@ -9,7 +9,7 @@ CC = g++
 COMPILER_FLAGS = -w -std=c++14
 
 #LINKER_FLAGS specifies the libraries we're linking against
-LINKER_FLAGS = -lSDL2 -lSDL2_image -lSDL2_mixer -lSDL2_ttf
+LINKER_FLAGS = -lSDL2 -lSDL2_image -lSDL2_mixer -lSDL2_ttf -lboost_system -lboost_filesystem
 
 #OBJ_NAME specifies the name of our exectuable
 OBJ_NAME = marcoman
