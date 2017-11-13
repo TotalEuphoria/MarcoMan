@@ -27,7 +27,7 @@ void Player::event( SDL_Event* event )
 			case SDLK_SPACE: 
 				if( state == STAND )
 				{
-					velocity.y -=  537;
+					velocity.y -=  300;
 					state = JUMP_ASC;
 				}
 				break;
