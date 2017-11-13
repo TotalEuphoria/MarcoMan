@@ -11,7 +11,7 @@ class Block : public Texture
 public:
 	int w , h;
 	
-	Block( const char* filePath , int , int );
+	Block( const std::string filePath , int , int );
 	~Block();
 	void add( float , float , float );
 	void render();

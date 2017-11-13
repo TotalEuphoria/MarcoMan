@@ -5,15 +5,12 @@
 #include "Map.h"
 #include "Player.h"
 #include "Collision.h"
-
 #include <SDL2/SDL.h>
-
 int main()
 {
     SDL_Event event;
 	Map map;
     Player block;
-	
     while( !game.quit )
     {
 		float topB = Collision::platform( block , map.block );
@@ -22,9 +19,9 @@ int main()
 			if( block.state == JUMP_DES )
 			{
 				block.state = STAND;
-				if( ( topB - 32 ) != floor( block.position.y ) )
+				if( ( topB - 24 ) != floor( block.position.y ) )
 				{
-					block.position.y = ( topB - 32 );
+					block.position.y = ( topB - 24 );
 				}
 				else { }
 			}
@@ -39,7 +36,6 @@ int main()
             game.event( &event );
             block.event( &event );
         }
-		
         SDL_SetRenderDrawColor( game.getRenderer() , 0xFF , 0xFF , 0xFF , 0xFF );
         SDL_RenderClear( game.getRenderer() );
         scenario.render();
@@ -47,7 +43,6 @@ int main()
 		block.update();
         SDL_RenderPresent( game.getRenderer() );
         timer.getTicks();
-		
     }
     return 0;
 }

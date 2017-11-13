@@ -1,8 +1,8 @@
 #include "Map.h"
 
-const char* FILEPATH = "/home/marco/projects/MarcoMan/sprites/brownBlock.bmp";
+const std::string FILEPATH = CWD+"/sprites/brownBlock.bmp";
 
-Map::Map() : block( FILEPATH , 32 , 32 )
+Map::Map() : block( FILEPATH , 24 , 24 )
 {
 	block.add( 0 , 2176 , 420 );
 	block.add( 0 , 2176 , 450 );

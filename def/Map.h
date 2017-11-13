@@ -2,8 +2,9 @@
 #define MAP_H_INCLUDED
 
 #include "Block.h"
+#include <iostream>
 
-extern const char* FILEPATH;
+extern const std::string FILEPATH;
 
 class Map
 {

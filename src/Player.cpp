@@ -2,7 +2,7 @@
 
 
 
-Player::Player() : MovingEntity( 32 , 32 , 32 , 32 ) , Texture( "/home/marco/projects/MarcoMan/sprites/megamanSpritesheet.png" )
+Player::Player() : MovingEntity( 32 , 32 , 24 , 24 ) , Texture( CWD+"/sprites/megamanSpritesheet.png" )
 {
 	speed = 200;
 	state = JUMP_DES;
@@ -27,7 +27,7 @@ void Player::event( SDL_Event* event )
 			case SDLK_SPACE: 
 				if( state == STAND )
 				{
-					velocity.y -=  537;
+					velocity.y -=  300;
 					state = JUMP_ASC;
 				}
 				break;
