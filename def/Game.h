@@ -9,6 +9,7 @@ extern const int WINDOW_WIDTH;
 extern const int WINDOW_HEIGHT;
 extern const std::string WINDOW_TITLE;
 extern const std::string CWD;
+
 class Game
 {
 public:

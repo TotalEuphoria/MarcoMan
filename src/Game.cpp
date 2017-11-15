@@ -4,9 +4,7 @@ Game game;
 
 const int WINDOW_WIDTH = 256;
 const int WINDOW_HEIGHT = 240;
-
 const std::string WINDOW_TITLE = "Marco Mayne!";
-
 const std::string CWD = boost::filesystem::current_path().generic_string();
 
 Game::Game()
