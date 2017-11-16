@@ -48,6 +48,7 @@ void Player::event( SDL_Event* event )
     }
     else { }
 }
+
 void Player::xBounding( float xValue )
 {
 	if( velocity.x )
@@ -75,23 +76,19 @@ void Player::xBounding( float xValue )
 	}
 	else { }
 }
+
 void Player::move()
 {
-	
 	float timeStep = timer.getTimeStep();
 	float value = 0;
 	if( state  == STAND  ) { velocity.y =  0; }
-	else { velocity = velocity + GRAVITY;  }
-	
+	else { velocity = velocity + GRAVITY; }
 	if( velocity.y > 0 ) { state = JUMP_DES; }
-	
 	
 	value  = velocity.y * timeStep;
 	
 	position.y += value;
 	xBounding( ( velocity.x * timeStep ) );
-	
-	
 }
 void Player::render()
 {
