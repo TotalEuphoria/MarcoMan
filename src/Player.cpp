@@ -1,7 +1,5 @@
 #include "Player.h"
 
-
-
 Player::Player() : MovingEntity( 32 , 32 , 24 , 24 ) , Texture( CWD+"/sprites/megamanSpritesheet.png" )
 {
 	speed = 200;

@@ -3,7 +3,6 @@
 
 #include "StaticEntity.h"
 #include "Texture.h"
-#include <iostream>
 #include <vector>
 
 class Block : public Texture

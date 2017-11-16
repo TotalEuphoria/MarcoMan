@@ -1,8 +1,8 @@
 #ifndef POINT_H_INCLUDED
 #define POINT_H_INCLUDED
 
-#include <cmath>
 #include "Vector.h"
+#include <cmath>
 
 class Point
 {

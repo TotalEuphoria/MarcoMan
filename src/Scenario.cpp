@@ -4,7 +4,6 @@ Scenario scenario;
 
 const int SCENARIO_WIDTH = 7168;
 const int SCENARIO_HEIGHT = 448;
-
 const SDL_Color BLUE_SKY = { 92 , 148 , 252 , 0 };
 
 Scenario::Scenario()

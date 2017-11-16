@@ -4,7 +4,6 @@ Collision::Collision() { }
 
 Collision::~Collision() { }
 
-
 float Collision::platform( MovingEntity& entity , Block block )
 {
 	float leftA = 0, leftB = 0, rightA = 0, rightB = 0, topA = 0, topB = 0 , bottomA = 0 , bottomB = 0;
