@@ -42,7 +42,7 @@ void Player::event( SDL_Event* event )
 			case SDLK_SPACE:
 				if( state == JUMP_ASC )
 				{
-					velocity.y += 200;
+					velocity.y += 100;
 					state = JUMP_DES; 
 				}
 				break;
@@ -56,20 +56,22 @@ void Player::xBounding( float xValue )
 	{
 		if( velocity.x > 0 )
 		{
-			if( windowRect.x >=  ( ( WINDOW_WIDTH / 2 ) + 100 )  && scenario.rect.x <= ( SCENARIO_WIDTH - WINDOW_WIDTH ) )
+			if( windowRect.x >=  ( ( GAME_LOGICAL_WIDTH / 2 ) + 25 )  &&
+				scenario.rect.x <= ( SCENARIO_WIDTH - WINDOW_WIDTH )
+			)
 			{
 				scenario.rect.x += xValue;
 			}
-			if( position.x >= SCENARIO_WIDTH - 32 ) {  }
+			if( position.x >= SCENARIO_WIDTH - 24 ) {  }
 			else{ position.x += xValue; }
 		}
 		else
 		{
-			if( windowRect.x <=  ( ( WINDOW_WIDTH / 2 ) - 100 ) && scenario.rect.x > 0 )
+			if( windowRect.x <=  ( ( GAME_LOGICAL_WIDTH / 2 ) - 25 ) && scenario.rect.x > 0 )
 			{
 				scenario.rect.x += xValue;
 			}
-			if( position.x <= 32 ) {  }
+			if( position.x <= 24 ) {  }
 			else { position.x += xValue; }
 		}
 	}

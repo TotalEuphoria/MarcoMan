@@ -1,11 +1,12 @@
 #include "Game.h"
 #include "Timer.h"
-
 #include "Scenario.h"
 #include "Map.h"
 #include "Player.h"
 #include "Collision.h"
+
 #include <SDL2/SDL.h>
+
 int main()
 {
     SDL_Event event;

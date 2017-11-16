@@ -9,9 +9,9 @@ const SDL_Color BLUE_SKY = { 92 , 148 , 252 , 0 };
 
 Scenario::Scenario()
 {
-	rect.y = ( SCENARIO_HEIGHT - WINDOW_HEIGHT );
-	rect.w = WINDOW_WIDTH; 
-	rect.h = WINDOW_HEIGHT;
+	rect.y = ( SCENARIO_HEIGHT - GAME_LOGICAL_HEIGHT );
+	rect.w = GAME_LOGICAL_WIDTH;
+	rect.h = GAME_LOGICAL_HEIGHT;
 }
 Scenario::~Scenario() { }
 void Scenario::render( )
