@@ -19,9 +19,9 @@ float Collision::platform( MovingEntity& entity , Block block )
 	for( auto i : block.entities )
 	{
 		leftB = i.position.x;
-        topB = i.position.y;
-        rightB = i.position.x + block.w;
-        bottomB = i.position.y + block.h;
+		topB = i.position.y;
+		rightB = i.position.x + block.w;
+		bottomB = i.position.y + block.h;
 		
 		if ( ( rightA - 8 >= leftB && leftA < rightB ) && 
 			 ( topA < bottomB  && topA > bottomB + 10 )
@@ -37,7 +37,7 @@ float Collision::platform( MovingEntity& entity , Block block )
 		{
 			return topB;
 		}
-		else {  }
+		else {	}
 	}
 	return 0;
 }

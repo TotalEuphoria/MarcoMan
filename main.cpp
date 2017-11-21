@@ -9,11 +9,11 @@
 
 int main()
 {
-    SDL_Event event;
+	SDL_Event event;
 	Map map;
-    Player block;
-    while( !game.quit )
-    {
+	Player block;
+	while( !game.quit )
+	{
 		float topB = Collision::platform( block , map.block );
 		if( topB )
 		{
@@ -33,17 +33,17 @@ int main()
 		}
 		
 		while( SDL_PollEvent( &event ) )
-        {
-            game.event( &event );
-            block.event( &event );
-        }
-        SDL_SetRenderDrawColor( game.getRenderer() , 0xFF , 0xFF , 0xFF , 0xFF );
-        SDL_RenderClear( game.getRenderer() );
-        scenario.render();
+		{
+			game.event( &event );
+			block.event( &event );
+		}
+		SDL_SetRenderDrawColor( game.getRenderer() , 0xFF , 0xFF , 0xFF , 0xFF );
+		SDL_RenderClear( game.getRenderer() );
+		scenario.render();
 		map.block.render();
 		block.update();
-        SDL_RenderPresent( game.getRenderer() );
-        timer.getTicks();
-    }
-    return 0;
+		SDL_RenderPresent( game.getRenderer() );
+		timer.getTicks();
+	}
+	return 0;
 }

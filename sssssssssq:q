@@ -1,0 +1,75 @@
+[1mdiff --git a/main.cpp b/main.cpp[m
+[1mindex f1c7fa7..ce4e948 100644[m
+[1m--- a/main.cpp[m
+[1m+++ b/main.cpp[m
+[36m@@ -9,11 +9,11 @@[m
+ [m
+ int main()[m
+ {[m
+[31m-    SDL_Event event;[m
+[32m+[m	[32mSDL_Event event;[m
+ 	Map map;[m
+[31m-    Player block;[m
+[31m-    while( !game.quit )[m
+[31m-    {[m
+[32m+[m	[32mPlayer block;[m
+[32m+[m	[32mwhile( !game.quit )[m
+[32m+[m	[32m{[m
+ 		float topB = Collision::platform( block , map.block );[m
+ 		if( topB )[m
+ 		{[m
+[36m@@ -33,17 +33,17 @@[m [mint main()[m
+ 		}[m
+ 		[m
+ 		while( SDL_PollEvent( &event ) )[m
+[31m-        {[m
+[31m-            game.event( &event );[m
+[31m-            block.event( &event );[m
+[31m-        }[m
+[31m-        SDL_SetRenderDrawColor( game.getRenderer() , 0xFF , 0xFF , 0xFF , 0xFF );[m
+[31m-        SDL_RenderClear( game.getRenderer() );[m
+[31m-        scenario.render();[m
+[32m+[m		[32m{[m
+[32m+[m			[32mgame.event( &event );[m
+[32m+[m			[32mblock.event( &event );[m
+[32m+[m		[32m}[m
+[32m+[m		[32mSDL_SetRenderDrawColor( game.getRenderer() , 0xFF , 0xFF , 0xFF , 0xFF );[m
+[32m+[m		[32mSDL_RenderClear( game.getRenderer() );[m
+[32m+[m		[32mscenario.render();[m
+ 		map.block.render();[m
+ 		block.update();[m
+[31m-        SDL_RenderPresent( game.getRenderer() );[m
+[31m-        timer.getTicks();[m
+[31m-    }[m
+[31m-    return 0;[m
+[32m+[m		[32mSDL_RenderPresent( game.getRenderer() );[m
+[32m+[m		[32mtimer.getTicks();[m
+[32m+[m	[32m}[m
+[32m+[m	[32mreturn 0;[m
+ }[m
+[1mdiff --git a/src/Collision.cpp b/src/Collision.cpp[m
+[1mindex c2eb5d6..0ff6394 100644[m
+[1m--- a/src/Collision.cpp[m
+[1m+++ b/src/Collision.cpp[m
+[36m@@ -19,9 +19,9 @@[m [mfloat Collision::platform( MovingEntity& entity , Block block )[m
+ 	for( auto i : block.entities )[m
+ 	{[m
+ 		leftB = i.position.x;[m
+[31m-        topB = i.position.y;[m
+[31m-        rightB = i.position.x + block.w;[m
+[31m-        bottomB = i.position.y + block.h;[m
+[32m+[m		[32mtopB = i.position.y;[m
+[32m+[m		[32mrightB = i.position.x + block.w;[m
+[32m+[m		[32mbottomB = i.position.y + block.h;[m
+ 		[m
+ 		if ( ( rightA - 8 >= leftB && leftA < rightB ) && [m
+ 			 ( topA < bottomB  && topA > bottomB + 10 )[m
+[36m@@ -37,7 +37,7 @@[m [mfloat Collision::platform( MovingEntity& entity , Block block )[m
+ 		{[m
+ 			return topB;[m
+ 		}[m
+[31m-		else {  }[m
+[32m+[m		[32melse {	}[m
+ 	}[m
+ 	return 0;[m
+ }[m
