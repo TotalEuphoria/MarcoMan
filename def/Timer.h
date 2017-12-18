@@ -3,7 +3,6 @@
 
 #include <SDL2/SDL.h>
 
-
 class Timer
 {    
 public:

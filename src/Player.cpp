@@ -1,7 +1,5 @@
 #include "Player.h"
 
-
-
 Player::Player() : MovingEntity( 32 , 32 , 24 , 24 ) , Texture( CWD+"/sprites/megamanSpritesheet.png" )
 {
 	speed = 200;
@@ -42,7 +40,7 @@ void Player::event( SDL_Event* event )
 			case SDLK_SPACE:
 				if( state == JUMP_ASC )
 				{
-					velocity.y += 200;
+					velocity.y += 100;
 					state = JUMP_DES; 
 				}
 				break;
@@ -50,48 +48,47 @@ void Player::event( SDL_Event* event )
     }
     else { }
 }
+
 void Player::xBounding( float xValue )
 {
 	if( velocity.x )
 	{
 		if( velocity.x > 0 )
 		{
-			if( windowRect.x >=  ( ( WINDOW_WIDTH / 2 ) + 100 )  && scenario.rect.x <= ( SCENARIO_WIDTH - WINDOW_WIDTH ) )
+			if( windowRect.x >=  ( ( GAME_LOGICAL_WIDTH / 2 ) + 25 )  &&
+				scenario.rect.x <= ( SCENARIO_WIDTH - WINDOW_WIDTH )
+			)
 			{
 				scenario.rect.x += xValue;
 			}
-			if( position.x >= SCENARIO_WIDTH - 32 ) {  }
+			if( position.x >= SCENARIO_WIDTH - 24 ) {  }
 			else{ position.x += xValue; }
 		}
 		else
 		{
-			if( windowRect.x <=  ( ( WINDOW_WIDTH / 2 ) - 100 ) && scenario.rect.x > 0 )
+			if( windowRect.x <=  ( ( GAME_LOGICAL_WIDTH / 2 ) - 25 ) && scenario.rect.x > 0 )
 			{
 				scenario.rect.x += xValue;
 			}
-			if( position.x <= 32 ) {  }
+			if( position.x <= 24 ) {  }
 			else { position.x += xValue; }
 		}
 	}
 	else { }
 }
+
 void Player::move()
 {
-	
 	float timeStep = timer.getTimeStep();
 	float value = 0;
 	if( state  == STAND  ) { velocity.y =  0; }
-	else { velocity = velocity + GRAVITY;  }
-	
+	else { velocity = velocity + GRAVITY; }
 	if( velocity.y > 0 ) { state = JUMP_DES; }
-	
 	
 	value  = velocity.y * timeStep;
 	
 	position.y += value;
 	xBounding( ( velocity.x * timeStep ) );
-	
-	
 }
 void Player::render()
 {

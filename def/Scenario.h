@@ -3,12 +3,10 @@
 
 #include "Game.h"
 #include "Point.h"
-
 #include <SDL2/SDL_image.h>
 
 extern const int SCENARIO_WIDTH;
 extern const int SCENARIO_HEIGHT;
-
 extern const SDL_Color BLUE_SKY;
 
 class Scenario

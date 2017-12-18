@@ -8,6 +8,7 @@ const int HIT = 3;
 const int STAND = 4;
 const int JUMP_ASC = 5;
 const int JUMP_DES = 6;
+
 MovingEntity::MovingEntity( float x , float y , int w , int h  ) : StaticEntity( x , y , w , h )
 {
     
