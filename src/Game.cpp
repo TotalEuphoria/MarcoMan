@@ -2,8 +2,8 @@
 
 Game game;
 
-const int WINDOW_WIDTH = 1024;
-const int WINDOW_HEIGHT = 960;
+const int WINDOW_WIDTH = 512;
+const int WINDOW_HEIGHT = 480;
 const int GAME_LOGICAL_WIDTH = 256;
 const int GAME_LOGICAL_HEIGHT = 240;
 
@@ -24,6 +24,7 @@ Game::Game()
         renderer = SDL_CreateRenderer( window , -1 , SDL_RENDERER_ACCELERATED ); 
         SDL_SetHint( SDL_HINT_RENDER_SCALE_QUALITY, "linear" );  // make the scaled rendering look smoother.
         SDL_RenderSetLogicalSize( renderer, GAME_LOGICAL_WIDTH , GAME_LOGICAL_HEIGHT );
+        SDL_SetWindowMinimumSize( window , GAME_LOGICAL_WIDTH , GAME_LOGICAL_HEIGHT );
     }
     else {  }
 }
