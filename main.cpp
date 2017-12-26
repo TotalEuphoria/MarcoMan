@@ -14,7 +14,16 @@ int main()
 	Player block;
 	while( !game.quit )
 	{
+		timer.update();
+		
+		while ( timer.acumulator >= timer.getTimeStep() )
+		{
+			block.move();
+			timer.acumulator -= timer.getTimeStep();
+		}
+		
 		float topB = Collision::platform( block , map.block );
+
 		if( topB )
 		{
 			if( block.state == JUMP_DES )
@@ -37,13 +46,12 @@ int main()
 			game.event( &event );
 			block.event( &event );
 		}
+		
 		SDL_SetRenderDrawColor( game.getRenderer() , 0xFF , 0xFF , 0xFF , 0xFF );
 		SDL_RenderClear( game.getRenderer() );
-		scenario.render();
 		map.block.render();
-		block.update();
+		block.render();
 		SDL_RenderPresent( game.getRenderer() );
-		timer.getTicks();
 	}
 	return 0;
 }

@@ -20,12 +20,14 @@ StaticEntity::~StaticEntity() { }
 
 void StaticEntity::adjustRectPosition()
 {
-    windowRect.x = ( ( position.x - scenario.rect.x ) ) - ( windowRect.w );
-    windowRect.y = ( ( position.y - scenario.rect.y ) ) - ( windowRect.h );
+	windowRect.x = floor( ( ( position.x - scenario.rect.x ) ) - ( windowRect.w ) );
+    windowRect.y = floor( ( ( position.y - scenario.rect.y ) ) - ( windowRect.h ) );
+    
+    mapLocator = scenario.map[(int)position.x - (int)position.x%100]
+		    [(int)position.y - (int)position.y%100];
 }
 void StaticEntity::adjustRectSprite()
 {
     windowRect.x = ( position.x - ( windowRect.w / 2 ) );
     windowRect.y = ( position.y - ( windowRect.h / 2 ) );
 }
-

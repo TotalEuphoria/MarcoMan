@@ -6,12 +6,15 @@
 class Timer
 {    
 public:
-    Timer();
+	float acumulator;
+	
+	Timer();
     ~Timer();
     float getTimeStep();
-	void getTicks();
+    void update();
+    
 private:
-	float timeStep , acumulator , currentTime , previousTime , frameTime;
+	float timeStep , currentTime , previousTime , frameTime;
 };
 
 extern Timer timer;

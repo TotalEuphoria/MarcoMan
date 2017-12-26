@@ -18,7 +18,7 @@ extern const int JUMP_DES;
 class MovingEntity : public StaticEntity
 {
 public:
-    Vector direction , velocity , acceleration;
+	Vector direction , velocity , acceleration , deceleration , currentAcceleration;
 	int state , power , hp , speed;
 
     MovingEntity( float x , float y , int w , int h );
