@@ -10,9 +10,8 @@ class StaticEntity
 public:
 	SDL_Rect textureRect;
 	SDL_Rect windowRect;
-
 	Point position = { 0 , 0 };
-	
+	int mapLocator = 0;
     StaticEntity( float , float , int , int );
 	StaticEntity( int , int );
     StaticEntity(  );

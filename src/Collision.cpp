@@ -24,7 +24,7 @@ float Collision::platform( MovingEntity& entity , Block block )
 		bottomB = i.position.y + block.h;
 		
 		if ( ( rightA - 8 >= leftB && leftA < rightB ) && 
-			 ( topA < bottomB  && topA > bottomB + 10 )
+		     ( topA < bottomB  && topA > bottomB + 10 )
 			)
 		{
 			entity.state = JUMP_DES;
@@ -32,7 +32,7 @@ float Collision::platform( MovingEntity& entity , Block block )
 		}
 		
 		if( ( rightA - 8 >= leftB && leftA < rightB ) && 
-			( bottomA > topB  && bottomA < topB + 10 ) 
+		    ( bottomA > topB  && bottomA < topB + 10 ) 
 			)
 		{
 			return topB;

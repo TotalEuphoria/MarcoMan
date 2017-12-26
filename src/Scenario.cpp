@@ -3,19 +3,34 @@
 Scenario scenario;
 
 const int SCENARIO_WIDTH = 7168;
-const int SCENARIO_HEIGHT = 448;
+const int SCENARIO_HEIGHT = 240;
 const SDL_Color BLUE_SKY = { 92 , 148 , 252 , 0 };
 
 Scenario::Scenario()
 {
-	rect.y = ( SCENARIO_HEIGHT - GAME_LOGICAL_HEIGHT );
-	rect.w = GAME_LOGICAL_WIDTH;
-	rect.h = GAME_LOGICAL_HEIGHT;
+	generateScenarioMatrix();
 }
 Scenario::~Scenario() { }
-void Scenario::render( )
+
+void Scenario::move( float distance )
 {
-    //SDL_SetRenderDrawColor( game.getRenderer() , BLUE_SKY.r , BLUE_SKY.g , BLUE_SKY.b , BLUE_SKY.a );
-    //SDL_RenderFillRect( game.getRenderer() , &rect );
+	position.x += distance;
+	rect.x = floor( position.x );
 }
+
+void Scenario::generateScenarioMatrix()
+{
+	int id = 0;
+	int width = ( SCENARIO_WIDTH / 100 ) + 1;
+	int heigth = ( SCENARIO_HEIGHT / 100 ) + 1;
+
+	for( int x = 0 , incrementX = 0 ; x < width; x++ , incrementX += 100 )
+	{
+		for( int y = 0 , incrementY = 0; y < heigth; y++ , incrementY += 100 )
+		{
+			map[incrementX][incrementY] = id++;
+		}
+	}
+}
+
 

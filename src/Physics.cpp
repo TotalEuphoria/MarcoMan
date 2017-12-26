@@ -1,6 +1,6 @@
 #include "Physics.h"
 
-const Vector GRAVITY( 0 , 2 );
+const Vector GRAVITY( 0 , 1 );
 
 Physics::Physics()
 {
