@@ -19,26 +19,8 @@ int main()
 		while ( timer.acumulator >= timer.getTimeStep() )
 		{
 			block.move();
+			Collision::platform( block , map.block );
 			timer.acumulator -= timer.getTimeStep();
-		}
-		
-		float topB = Collision::platform( block , map.block );
-
-		if( topB )
-		{
-			if( block.state == JUMP_DES )
-			{
-				block.state = STAND;
-				if( ( topB - 24 ) != floor( block.position.y ) )
-				{
-					block.position.y = ( topB - 24 );
-				}
-				else { }
-			}
-		}
-		else
-		{
-			if( block.state == STAND ) { block.state = JUMP_DES; }
 		}
 		
 		while( SDL_PollEvent( &event ) )
