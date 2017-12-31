@@ -5,7 +5,6 @@ Player::Player() : MovingEntity( 32 , 32 , 24 , 24 ) , Texture( CWD+"/sprites/me
 	speed  = 200;
 	acceleration = { 200 , 0 };
 	deceleration = { 400 , 0 };
-	
 	state = JUMP_DES;
 	textureRect.x = 8;
 	textureRect.y = 13;
@@ -25,12 +24,19 @@ void Player::event( SDL_Event* event )
 	    {
 		    case SDLK_a: currentAcceleration.x -= acceleration.x; break;
 		    case SDLK_d: currentAcceleration.x += acceleration.x; break;
-		    case SDLK_SPACE: 
-			    if( state == STAND )
+		    case SDLK_SPACE:
+			    if( state == STAND || state == MOVE )
 			    {
-				    velocity.y -=  200;
 				    state = JUMP_ASC;
+				    velocity.y -= 300;
 			    }
+			    break;
+		    case SDLK_x:
+			    position.x = 0;
+			    position.y = 0;
+			    scenario.rect.x = 0;
+			    scenario.position.x = 0;
+			    state = JUMP_DES;
 			    break;
 	    }
     }
@@ -40,14 +46,7 @@ void Player::event( SDL_Event* event )
 	    {
 		    case SDLK_a: currentAcceleration.x += acceleration.x; break;
 		    case SDLK_d: currentAcceleration.x -= acceleration.x; break;
-			case SDLK_SPACE:
-				if( state == JUMP_ASC )
-				{
-
-					velocity.y += 100;
-					state = JUMP_DES; 
-				}
-				break;
+		    case SDLK_SPACE: velocity.y += 100; break;
 	    }
     }
     else { }
@@ -86,13 +85,16 @@ void Player::move()
 	float timeStep = timer.getTimeStep();
 	float value = 0;
 	
-	if( state  == STAND  ) { velocity.y =  0; }
-	else { velocity = velocity + GRAVITY; }
-	
-	if( velocity.y > 0 ) { state = JUMP_DES; }
+	if( state == JUMP_DES || state == JUMP_ASC ) { velocity = velocity + GRAVITY; }
+	else { velocity.y = 0; }
+
+	previousY = position.y;
 	
 	position.y += velocity.y * timeStep;
 
+	if( ( previousY < position.y ) && velocity.y ) { state = JUMP_DES; }
+	else if( velocity.x && state == STAND ) { state = MOVE; }
+	
 	if ( currentAcceleration.x != 0 )
 	{
 		if( velocity.x >= speed ) { velocity.x = speed; }
@@ -105,13 +107,13 @@ void Player::move()
 		else if ( velocity.x > 0 ) { velocity.x -= deceleration.x * timeStep; } 
 		else { velocity.x = 0; }
 	}
+
 	xBounding( ( velocity.x * timeStep ) );
+	printf("%d \n" , state );
 }
-
-
 
 void Player::render()
 {
 	adjustRectPosition();
 	SDL_RenderCopy( game.getRenderer() , getTexture() , &textureRect , &windowRect );
-}
+} 
