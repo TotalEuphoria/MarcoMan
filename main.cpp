@@ -4,7 +4,6 @@
 #include "Map.h"
 #include "Player.h"
 #include "Collision.h"
-
 #include <SDL2/SDL.h>
 
 int main()
@@ -12,13 +11,13 @@ int main()
 	SDL_Event event;
 	Map map;
 	Player block;
+	
 	while( !game.quit )
 	{
 		timer.update();
 		
 		while ( timer.acumulator >= timer.getTimeStep() )
 		{
-			
 			block.move();
 			Collision::platform( block , map.block );
 			timer.acumulator -= timer.getTimeStep();

@@ -24,8 +24,7 @@ public:
     MovingEntity( float x , float y , int w , int h );
     virtual ~MovingEntity ();
 	
-	void adjustAngle( Point );
-		
+	void adjustAngle( Point );		
 	virtual void move() = 0;
 	virtual void render() = 0;
 	virtual void update();

@@ -89,7 +89,6 @@ void Player::move()
 	else { velocity.y = 0; }
 
 	previousY = position.y;
-	
 	position.y += velocity.y * timeStep;
 
 	if( ( previousY < position.y ) && velocity.y ) { state = JUMP_DES; }
@@ -109,7 +108,6 @@ void Player::move()
 	}
 
 	xBounding( ( velocity.x * timeStep ) );
-	printf("%d \n" , state );
 }
 
 void Player::render()

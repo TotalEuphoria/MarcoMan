@@ -9,7 +9,6 @@ extern const int WINDOW_WIDTH;
 extern const int WINDOW_HEIGHT;
 extern const int GAME_LOGICAL_WIDTH;
 extern const int GAME_LOGICAL_HEIGHT;
-
 extern const std::string WINDOW_TITLE;
 extern const std::string CWD;
 

@@ -10,6 +10,8 @@
 class Player : public MovingEntity , Texture
 {
 public:
+	int previousY = 0;
+
 	Player();
 	~Player();
 	void move();
@@ -18,9 +20,6 @@ public:
 	void bound();
 	void xBounding( float );
 	void jump( float );
-
-	int previousY = 0;
-	
 };
 
 #endif // PLAYER_H_INCLUDED
