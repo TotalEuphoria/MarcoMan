@@ -18,8 +18,9 @@ public:
 	void bound();
 	void xBounding( float );
 	void jump( float );
+
+	int previousY = 0;
 	
-	bool jumping;
 };
 
 #endif // PLAYER_H_INCLUDED

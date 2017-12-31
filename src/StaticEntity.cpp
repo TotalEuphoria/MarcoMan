@@ -21,7 +21,7 @@ StaticEntity::~StaticEntity() { }
 void StaticEntity::adjustRectPosition()
 {
 	windowRect.x = floor( ( ( position.x - scenario.rect.x ) ) - ( windowRect.w ) );
-    windowRect.y = floor( ( ( position.y - scenario.rect.y ) ) - ( windowRect.h ) );
+	windowRect.y = floor( ( ( position.y - scenario.rect.y ) ) - ( windowRect.h ) );
     
     mapLocator = scenario.map[(int)position.x - (int)position.x%100]
 		    [(int)position.y - (int)position.y%100];

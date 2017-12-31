@@ -6,28 +6,30 @@ Collision::~Collision() { }
 
 void Collision::platform( MovingEntity& entity , Block block )
 {
-	
-	SDL_Rect rectA = transformRect( entity );
+	SDL_Rect rectA = transformPlatformRect( entity );
 	SDL_Rect rectB = { 0 , 0 , 0 , 0 };
 	std::vector<StaticEntity>::iterator i;
 	bool detected = false;
 
-	if( entity.state != STAND )
+	if( entity.state != STAND  )
 	{
 		for( auto i : block.entities )
 		{
-			if( entity.mapLocator == i.mapLocator )
+/*			if( entity.mapLocator == i.mapLocator )
+			{*/
+			rectB = transformPlatformRect( i );
+			if( bottomToTop( rectA , rectB ) )
 			{
-				rectB = transformRect( i );
-				if( bottomToTop( rectA , rectB ) )
+				if( entity.state != JUMP_ASC )
 				{
-					entity.position.y = i.position.y - entity.windowRect.w;
+					entity.position.y = i.position.y - i.windowRect.h;
+					entity.state = STAND;
 					detected = true;
-					if( entity.state != STAND || entity.state != MOVE ) { entity.state = STAND; }
 				}
 			}
-		}
-//		if( !detected ) { entity.state = JUMP_DES; }
+		}		    
+//		}
+		if( !detected && entity.state != JUMP_ASC ) { entity.state = JUMP_DES; }
 	}
 }
 
@@ -55,13 +57,20 @@ SDL_Rect Collision::transformPlatformRect( StaticEntity& entity )
 
 bool Collision::bottomToTop( SDL_Rect a , SDL_Rect b )
 {
-	if( ( a.h >= b.y && a.h <= b.h ) &&
-	    ( a.w >= b.x && a.w <= b.w )
-		)
+
+	if
+		(
+			(  a.h >= b.y && a.h <= ( b.y + 2 ) ) &&
+			(
+				( a.x >= b.x && a.x <= b.w) ||
+				( a.w >= b.x && a.w <= b.w )  
+				)
+			)
 	{
 		return true;
 	}
-	else { return false; }
+	else {
+		return false; }
 }
 
 

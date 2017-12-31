@@ -28,7 +28,7 @@ void Player::event( SDL_Event* event )
 			    if( state == STAND || state == MOVE )
 			    {
 				    state = JUMP_ASC;
-				    velocity.y -= 200;
+				    velocity.y -= 300;
 			    }
 			    break;
 		    case SDLK_x:
@@ -46,13 +46,7 @@ void Player::event( SDL_Event* event )
 	    {
 		    case SDLK_a: currentAcceleration.x += acceleration.x; break;
 		    case SDLK_d: currentAcceleration.x -= acceleration.x; break;
-		    case SDLK_SPACE:
-			    if( state == JUMP_ASC )
-			    {
-				    state = JUMP_DES;
-				    velocity.y += 50;
-			    }
-			    break;
+		    case SDLK_SPACE: velocity.y += 100; break;
 	    }
     }
     else { }
@@ -93,10 +87,13 @@ void Player::move()
 	
 	if( state == JUMP_DES || state == JUMP_ASC ) { velocity = velocity + GRAVITY; }
 	else { velocity.y = 0; }
+
+	previousY = position.y;
 	
 	position.y += velocity.y * timeStep;
 
-	printf("%f \n" , position.y);
+	if( ( previousY < position.y ) && velocity.y ) { state = JUMP_DES; }
+	else if( velocity.x && state == STAND ) { state = MOVE; }
 	
 	if ( currentAcceleration.x != 0 )
 	{
@@ -111,13 +108,12 @@ void Player::move()
 		else { velocity.x = 0; }
 	}
 
-	if( velocity.x != 0 && state == STAND ) { state = MOVE; }
-
 	xBounding( ( velocity.x * timeStep ) );
+	printf("%d \n" , state );
 }
 
 void Player::render()
 {
 	adjustRectPosition();
 	SDL_RenderCopy( game.getRenderer() , getTexture() , &textureRect , &windowRect );
-}
+} 

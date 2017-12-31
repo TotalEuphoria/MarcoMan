@@ -8,7 +8,7 @@ Map::Map() : block( FILEPATH , 24 , 24 )
 	block.add( 0 , 2176 , 245 );
 	
 	block.add( 100 , 300 , 300 );
-	block.add( 200 , 300 , 100 );
+	block.add( 100 , 300 , 150 );
 }
 
 Map::~Map()

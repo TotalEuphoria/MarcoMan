@@ -18,11 +18,12 @@ int main()
 		
 		while ( timer.acumulator >= timer.getTimeStep() )
 		{
+			
 			block.move();
 			Collision::platform( block , map.block );
 			timer.acumulator -= timer.getTimeStep();
 		}
-		
+				
 		while( SDL_PollEvent( &event ) )
 		{
 			game.event( &event );
